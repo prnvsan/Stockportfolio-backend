@@ -1,6 +1,8 @@
 const { createPool } = require('mysql')
 var express = require('express');
 var app = express();
+var cors = require('cors')
+app.use(cors())
 
 const pool = createPool({
  host: "localhost",
@@ -19,7 +21,7 @@ app.get('/', function(req,res)
             return console.log(err);
         }
         else{
-        return res.send(result);
+        return res.send(JSON.stringify(result));
         }
     })
    })
